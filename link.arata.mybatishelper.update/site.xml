@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/link.arata.mybatishelper.feature_0.1.0.jar" id="link.arata.mybatishelper.feature" version="0.1.0"/>
+   <category-def name="mybatishelper" label="MyBatis Helper">
+      <description>
+         MyBatis用のプラグインです。
+      </description>
+   </category-def>
+</site>
