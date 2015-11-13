@@ -1,3 +1,19 @@
+/*
+ * Copyright 2015 Shinichi ARATA
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
 package link.arata.mybatishelper;
 
 import java.io.ByteArrayInputStream;
@@ -38,12 +54,13 @@ public class MyBatisHelperCommand extends AbstractHandler {
 			file = project.getFile(new Path("/src/main/resources/" + fileName + ".xml"));
 			if (!file.exists()) {
 				createFolder(file.getProject(), file.getProjectRelativePath().removeLastSegments(1));
-
-				InputStream is = new ByteArrayInputStream(new byte[0]);
+				// デフォルトのXMLテンプレートの出力
+				String rtnXml = MessageResources.getMessage("mapperXml");
+				InputStream is = new ByteArrayInputStream(rtnXml.getBytes("utf-8"));
 				file.create(is, false, null);
 				is.close();
 			}
-			
+
 			IWorkbenchPage page = window.getActivePage();
 			IDE.openEditor(page, file);
 		} catch (Exception e) {
@@ -52,14 +69,14 @@ public class MyBatisHelperCommand extends AbstractHandler {
 
 		return null;
 	}
-	
+
 	// 拡張子を除くファイル名の取得
 	private String getFileName(ITextEditor textEditor) {
 		IFileEditorInput input = (IFileEditorInput) textEditor.getEditorInput();
 		IFile openFile = input.getFile();
 		String filePath = openFile.getFullPath().toString();
 		String noExtentionPath = filePath.substring(0, filePath.lastIndexOf("."));
-		return noExtentionPath.substring(noExtentionPath.lastIndexOf("/src/main/java/") + 15 );
+		return noExtentionPath.substring(noExtentionPath.lastIndexOf("/src/main/java/") + 15);
 	}
 
 	// フォルダーを再帰的に作成
