@@ -50,4 +50,23 @@ public class Activator extends AbstractUIPlugin {
 	public static Activator getDefault() {
 		return plugin;
 	}
+
+	// public IProject getProject() {
+	// IViewReference[] parts =
+	// getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
+	// for (IViewReference reference : parts) {
+	// System.out.println(reference.getClass().getCanonicalName());
+	// reference.getView(restore)
+	// IViewPart part = reference.getView(false);
+	// if (part instanceof ResourceNavigator) {
+	// System.out.println(part.getClass().getCanonicalName());
+	// ResourceNavigator navigator = (ResourceNavigator) part;
+	// StructuredSelection selection = (StructuredSelection)
+	// navigator.getTreeViewer().getSelection();
+	// IResource resource = (IResource) selection.getFirstElement();
+	// return resource.getProject();
+	// }
+	// }
+	// return null;
+	// }
 }
