@@ -13,7 +13,6 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package link.arata.mybatishelper;
 
 import java.io.ByteArrayInputStream;
@@ -36,10 +35,15 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.texteditor.ITextEditor;
 
+import link.arata.mybatishelper.util.PropertiesUtil;
+import link.arata.mybatishelper.util.StringUtil;
+
 public class MyBatisHelperCommand extends AbstractHandler {
 	private IProject project;
 	private String sourcePath;
 	private String resourcesPath;
+	private String newLineCode;
+	private String templateXml;
 
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
@@ -60,8 +64,7 @@ public class MyBatisHelperCommand extends AbstractHandler {
 			if (!file.exists()) {
 				createFolder(file.getProject(), file.getProjectRelativePath().removeLastSegments(1));
 				// デフォルトのXMLテンプレートの出力
-				String rtnXml = MessageResources.getMessage("mapperXml");
-				InputStream is = new ByteArrayInputStream(rtnXml.getBytes("utf-8"));
+				InputStream is = new ByteArrayInputStream(templateXml.getBytes("utf-8"));
 				file.create(is, false, null);
 				is.close();
 			}
@@ -80,6 +83,10 @@ public class MyBatisHelperCommand extends AbstractHandler {
 		project = Activator.getProject();
 		sourcePath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_SOUSRC_PACKAGE));
 		resourcesPath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_RESOURCES_PACKAGE));
+		newLineCode = ProjectPropertyPage.NEW_LINE_CODE_MAP
+				.get(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_NEW_LINE_CODE));
+		templateXml = PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_TEMPLATE_XML);
+		templateXml = StringUtil.normalizeNewLine(templateXml, newLineCode);
 	}
 
 	// パスの最初と最後に / をつける

@@ -1,5 +1,8 @@
 package link.arata.mybatishelper;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.IAdaptable;
 import org.eclipse.swt.SWT;
@@ -11,6 +14,9 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
+
+import link.arata.mybatishelper.util.PropertiesUtil;
+import link.arata.mybatishelper.util.StringUtil;
 
 public class ProjectPropertyPage extends PropertyPage {
 	public static final String KEY_SOUSRC_PACKAGE = "sourcePackage";
@@ -31,6 +37,14 @@ public class ProjectPropertyPage extends PropertyPage {
 			+ "\"http://mybatis.org/dtd/mybatis-3-mapper.dtd\">\r\n" + "<mapper>\r\n" + "</mapper>";
 
 	private static final String[] NEW_LINE_CODE_VALUES = { "CRLF", "LF" };
+
+	public static final Map<String, String> NEW_LINE_CODE_MAP;
+
+	static {
+		NEW_LINE_CODE_MAP = new HashMap<String, String>();
+		NEW_LINE_CODE_MAP.put(NEW_LINE_CODE_VALUES[0], "\r\n");
+		NEW_LINE_CODE_MAP.put(NEW_LINE_CODE_VALUES[1], "\n");
+	}
 
 	@Override
 	protected Control createContents(Composite parent) {
@@ -111,7 +125,9 @@ public class ProjectPropertyPage extends PropertyPage {
 		PropertiesUtil.setValue(project, KEY_SOUSRC_PACKAGE, sourcePackageText.getText());
 		PropertiesUtil.setValue(project, KEY_RESOURCES_PACKAGE, resourcesPackageText.getText());
 		PropertiesUtil.setValue(project, KEY_NEW_LINE_CODE, newLineCodeCombo.getText());
-		PropertiesUtil.setValue(project, KEY_TEMPLATE_XML, templateXmlText.getText());
+		// 改行コードはLF固定
+		String normalizeTemplateXmlText = StringUtil.normalizeNewLine(templateXmlText.getText());
+		PropertiesUtil.setValue(project, KEY_TEMPLATE_XML, normalizeTemplateXmlText);
 
 		return true;
 	}
