@@ -62,20 +62,20 @@ public class ProjectPropertyPage extends PropertyPage {
 		composite.setLayout(layout);
 		composite.setLayoutData(new GridData(GridData.FILL_BOTH));
 
-		Label sourcePackageLavel = new Label(composite, SWT.NONE);
-		sourcePackageLavel.setText("ソースパッケージ");
+		Label sourcePackageLabel = new Label(composite, SWT.NONE);
+		sourcePackageLabel.setText(MessageResources.getMessage("sourcePackage.label"));
 
 		sourcePackageText = new Text(composite, SWT.BORDER | SWT.SINGLE);
 		sourcePackageText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		Label resourcesPackageLabel = new Label(composite, SWT.NONE);
-		resourcesPackageLabel.setText("リソースパッケージ");
+		resourcesPackageLabel.setText(MessageResources.getMessage("resourcesPackage.label"));
 
 		resourcesPackageText = new Text(composite, SWT.BORDER | SWT.SINGLE);
 		resourcesPackageText.setLayoutData(new GridData(GridData.FILL_HORIZONTAL));
 
 		Label newLineCodeLabel = new Label(composite, SWT.NONE);
-		newLineCodeLabel.setText("改行コード");
+		newLineCodeLabel.setText(MessageResources.getMessage("newLineCode.label"));
 
 		newLineCodeCombo = new Combo(composite, SWT.READ_ONLY);
 		for (String newLine : NEW_LINE_CODE_VALUES) {
@@ -83,7 +83,7 @@ public class ProjectPropertyPage extends PropertyPage {
 		}
 
 		Label templateXmlLabel = new Label(composite, SWT.NONE);
-		templateXmlLabel.setText("テンプレートXML");
+		templateXmlLabel.setText(MessageResources.getMessage("templateXml.label"));
 
 		templateXmlText = new Text(composite, SWT.BORDER | SWT.V_SCROLL);
 		templateXmlText.setLayoutData(new GridData(GridData.FILL_BOTH));
