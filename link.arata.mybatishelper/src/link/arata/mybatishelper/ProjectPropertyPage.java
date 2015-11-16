@@ -1,10 +1,7 @@
 package link.arata.mybatishelper;
 
 import org.eclipse.core.resources.IProject;
-import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IAdaptable;
-import org.eclipse.core.runtime.ILog;
-import org.eclipse.core.runtime.QualifiedName;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.layout.GridData;
 import org.eclipse.swt.layout.GridLayout;
@@ -16,10 +13,10 @@ import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
 
 public class ProjectPropertyPage extends PropertyPage {
-	private static final String KEY_SOUSRC_PACKAGE = "sourcePackage";
-	private static final String KEY_RESOURCES_PACKAGE = "resourcesPackage";
-	private static final String KEY_NEW_LINE_CODE = "newLineCoee";
-	private static final String KEY_TEMPLATE_XML = "templateXml";
+	public static final String KEY_SOUSRC_PACKAGE = "sourcePackage";
+	public static final String KEY_RESOURCES_PACKAGE = "resourcesPackage";
+	public static final String KEY_NEW_LINE_CODE = "newLineCoee";
+	public static final String KEY_TEMPLATE_XML = "templateXml";
 
 	private Text sourcePackageText;
 	private Text resourcesPackageText;
@@ -42,7 +39,6 @@ public class ProjectPropertyPage extends PropertyPage {
 		initDisplay(composite);
 
 		initValue(project);
-		// Activator.getDefault().getProject();
 		return composite;
 	}
 
@@ -80,28 +76,28 @@ public class ProjectPropertyPage extends PropertyPage {
 	}
 
 	private void initValue(IProject project) {
-		String sourcePackage = getValue(project, KEY_SOUSRC_PACKAGE);
+		String sourcePackage = PropertiesUtil.getValue(project, KEY_SOUSRC_PACKAGE);
 		if (sourcePackage != null) {
 			sourcePackageText.setText(sourcePackage);
 		} else {
 			sourcePackageText.setText(DEFAULT_SOUSRC_PACKAGE);
 		}
 
-		String resourcesPackage = getValue(project, KEY_RESOURCES_PACKAGE);
+		String resourcesPackage = PropertiesUtil.getValue(project, KEY_RESOURCES_PACKAGE);
 		if (resourcesPackage != null) {
 			resourcesPackageText.setText(resourcesPackage);
 		} else {
 			resourcesPackageText.setText(DEFAULT_RESOURCES_PACKAGE);
 		}
 
-		String newLineCode = getValue(project, KEY_NEW_LINE_CODE);
+		String newLineCode = PropertiesUtil.getValue(project, KEY_NEW_LINE_CODE);
 		if (newLineCode != null) {
 			newLineCodeCombo.setText(newLineCode);
 		} else {
 			newLineCodeCombo.setText(DEFAULT_NEW_LINE_CODE);
 		}
 
-		String templateXml = getValue(project, KEY_TEMPLATE_XML);
+		String templateXml = PropertiesUtil.getValue(project, KEY_TEMPLATE_XML);
 		if (templateXml != null) {
 			templateXmlText.setText(templateXml);
 		} else {
@@ -112,10 +108,10 @@ public class ProjectPropertyPage extends PropertyPage {
 	@Override
 	public boolean performOk() {
 		IProject project = getProject();
-		setValue(project, KEY_SOUSRC_PACKAGE, sourcePackageText.getText());
-		setValue(project, KEY_RESOURCES_PACKAGE, resourcesPackageText.getText());
-		setValue(project, KEY_NEW_LINE_CODE, newLineCodeCombo.getText());
-		setValue(project, KEY_TEMPLATE_XML, templateXmlText.getText());
+		PropertiesUtil.setValue(project, KEY_SOUSRC_PACKAGE, sourcePackageText.getText());
+		PropertiesUtil.setValue(project, KEY_RESOURCES_PACKAGE, resourcesPackageText.getText());
+		PropertiesUtil.setValue(project, KEY_NEW_LINE_CODE, newLineCodeCombo.getText());
+		PropertiesUtil.setValue(project, KEY_TEMPLATE_XML, templateXmlText.getText());
 
 		return true;
 	}
@@ -138,24 +134,5 @@ public class ProjectPropertyPage extends PropertyPage {
 			return (IProject) project;
 		}
 		return null;
-	}
-
-	private String getValue(IProject project, String key) {
-		try {
-			return project.getPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, key));
-		} catch (CoreException e) {
-			ILog log = Activator.getDefault().getLog();
-			log.log(e.getStatus());
-			return null;
-		}
-	}
-
-	private void setValue(IProject project, String key, String value) {
-		try {
-			project.setPersistentProperty(new QualifiedName(Activator.PLUGIN_ID, key), value);
-		} catch (CoreException e) {
-			ILog log = Activator.getDefault().getLog();
-			log.log(e.getStatus());
-		}
 	}
 }

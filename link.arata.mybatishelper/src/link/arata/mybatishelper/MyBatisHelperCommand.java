@@ -37,8 +37,13 @@ import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.texteditor.ITextEditor;
 
 public class MyBatisHelperCommand extends AbstractHandler {
+	private IProject project;
+	private String sourcePath;
+	private String resourcesPath;
+
 	@Override
 	public Object execute(ExecutionEvent event) throws ExecutionException {
+		init();
 		try {
 			// アクティブエディタ（編集中のファイル）の情報を取得する。
 			IWorkbenchWindow window = PlatformUI.getWorkbench().getActiveWorkbenchWindow();
@@ -51,7 +56,7 @@ public class MyBatisHelperCommand extends AbstractHandler {
 
 			// ファイル名の取得
 			String fileName = getFileName(textEditor);
-			file = project.getFile(new Path("/src/main/resources/" + fileName + ".xml"));
+			file = project.getFile(new Path(resourcesPath + fileName + ".xml"));
 			if (!file.exists()) {
 				createFolder(file.getProject(), file.getProjectRelativePath().removeLastSegments(1));
 				// デフォルトのXMLテンプレートの出力
@@ -70,13 +75,31 @@ public class MyBatisHelperCommand extends AbstractHandler {
 		return null;
 	}
 
-	// 拡張子を除くファイル名の取得
+	// 初期化処理
+	private void init() {
+		project = Activator.getProject();
+		sourcePath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_SOUSRC_PACKAGE));
+		resourcesPath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_RESOURCES_PACKAGE));
+	}
+
+	// パスの最初と最後に / をつける
+	private String normalizePath(String path) {
+		if (path.length() == 0 || !(path.charAt(0) == '/')) {
+			path = "/" + path;
+		}
+		if (path.length() == 1 || !(path.lastIndexOf("/") == path.length() + 1)) {
+			path = path + "/";
+		}
+		return path;
+	}
+
+	// パッケージのルートと拡張子を除くファイルのパス
 	private String getFileName(ITextEditor textEditor) {
 		IFileEditorInput input = (IFileEditorInput) textEditor.getEditorInput();
 		IFile openFile = input.getFile();
 		String filePath = openFile.getFullPath().toString();
 		String noExtentionPath = filePath.substring(0, filePath.lastIndexOf("."));
-		return noExtentionPath.substring(noExtentionPath.lastIndexOf("/src/main/java/") + 15);
+		return noExtentionPath.substring(("/" + project.getName()).length() + sourcePath.length());
 	}
 
 	// フォルダーを再帰的に作成
