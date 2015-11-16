@@ -1,5 +1,12 @@
 package link.arata.mybatishelper;
 
+import org.eclipse.core.resources.IProject;
+import org.eclipse.core.resources.IResource;
+import org.eclipse.jdt.core.IJavaProject;
+import org.eclipse.jface.viewers.ISelection;
+import org.eclipse.jface.viewers.IStructuredSelection;
+import org.eclipse.ui.ISelectionService;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.osgi.framework.BundleContext;
 
@@ -51,22 +58,22 @@ public class Activator extends AbstractUIPlugin {
 		return plugin;
 	}
 
-	// public IProject getProject() {
-	// IViewReference[] parts =
-	// getWorkbench().getActiveWorkbenchWindow().getActivePage().getViewReferences();
-	// for (IViewReference reference : parts) {
-	// System.out.println(reference.getClass().getCanonicalName());
-	// reference.getView(restore)
-	// IViewPart part = reference.getView(false);
-	// if (part instanceof ResourceNavigator) {
-	// System.out.println(part.getClass().getCanonicalName());
-	// ResourceNavigator navigator = (ResourceNavigator) part;
-	// StructuredSelection selection = (StructuredSelection)
-	// navigator.getTreeViewer().getSelection();
-	// IResource resource = (IResource) selection.getFirstElement();
-	// return resource.getProject();
-	// }
-	// }
-	// return null;
-	// }
+	public IProject getProject() {
+		IProject project = null;
+		ISelectionService selectionService = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getSelectionService();
+
+		ISelection selection = selectionService.getSelection();
+
+		if (selection instanceof IStructuredSelection) {
+			Object element = ((IStructuredSelection) selection).getFirstElement();
+
+			if (element instanceof IResource) {
+				project = ((IResource) element).getProject();
+			} else if (element instanceof IJavaProject) {
+				IJavaProject jProject = ((IJavaProject) element).getJavaProject();
+				project = jProject.getProject();
+			}
+		}
+		return project;
+	}
 }
