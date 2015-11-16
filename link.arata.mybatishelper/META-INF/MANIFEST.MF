@@ -4,6 +4,7 @@ Bundle-Name: MyBatis Helper
 Bundle-SymbolicName: link.arata.mybatishelper;singleton:=true
 Bundle-Version: 0.1.0
 Bundle-Activator: link.arata.mybatishelper.Activator
+Bundle-Localization: plugin
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.ui.editors;bundle-version="3.9.0",
