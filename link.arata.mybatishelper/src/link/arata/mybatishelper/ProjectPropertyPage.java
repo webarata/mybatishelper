@@ -151,4 +151,22 @@ public class ProjectPropertyPage extends PropertyPage {
 		}
 		return null;
 	}
+
+	/**
+	 * プロパティを設定せずに処理した場合のためにデフォルト値を設定する
+	 * 
+	 * @param project
+	 *            プロジェクト
+	 */
+	public static void setDefault(IProject project) {
+		if (PropertiesUtil.getValue(project, KEY_RESOURCES_PACKAGE) != null) {
+			return;
+		}
+
+		PropertiesUtil.setValue(project, KEY_SOUSRC_PACKAGE, DEFAULT_RESOURCES_PACKAGE);
+		PropertiesUtil.setValue(project, KEY_RESOURCES_PACKAGE, DEFAULT_RESOURCES_PACKAGE);
+		PropertiesUtil.setValue(project, KEY_NEW_LINE_CODE, DEFAULT_NEW_LINE_CODE);
+		PropertiesUtil.setValue(project, KEY_TEMPLATE_XML, DEFAULT_TEMPLATE_XML);
+	}
+
 }
