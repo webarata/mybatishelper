@@ -81,6 +81,9 @@ public class MyBatisHelperCommand extends AbstractHandler {
 	// 初期化処理
 	private void init() {
 		project = Activator.getProject();
+
+		ProjectPropertyPage.setDefault(project);
+
 		sourcePath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_SOUSRC_PACKAGE));
 		resourcesPath = normalizePath(PropertiesUtil.getValue(project, ProjectPropertyPage.KEY_RESOURCES_PACKAGE));
 		newLineCode = ProjectPropertyPage.NEW_LINE_CODE_MAP
