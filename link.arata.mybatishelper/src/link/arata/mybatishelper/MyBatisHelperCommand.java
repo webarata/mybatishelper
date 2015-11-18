@@ -27,6 +27,7 @@ import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
+import org.eclipse.jface.dialogs.MessageDialog;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.IWorkbenchPage;
@@ -57,6 +58,20 @@ public class MyBatisHelperCommand extends AbstractHandler {
 			IFileEditorInput editorInput = (IFileEditorInput) textEditor.getEditorInput();
 			IFile file = editorInput.getFile();
 			IProject project = file.getProject();
+
+			// 指定したディレクトリーの存在チェック
+			IFolder srcFolder = project.getFolder(new Path(sourcePath));
+			if (!srcFolder.exists()) {
+				MessageDialog.openError(window.getShell(), MessageResources.getMessage("noSourceFolder"),
+						MessageResources.getMessage("noSourceFolder.detail"));
+				return null;
+			}
+			IFolder resoucesFolder = project.getFolder(new Path(resourcesPath));
+			if (!resoucesFolder.exists()) {
+				MessageDialog.openError(window.getShell(), MessageResources.getMessage("noResourcesFolder"),
+						MessageResources.getMessage("noResourcesFolder"));
+				return null;
+			}
 
 			// ファイル名の取得
 			String fileName = getFileName(textEditor);
