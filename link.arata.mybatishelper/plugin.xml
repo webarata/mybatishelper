@@ -4,7 +4,7 @@
  <extension point="org.eclipse.ui.commands">
   <command defaultHandler="link.arata.mybatishelper.MyBatisHelperCommand"
    id="link.arata.mybatishelper.MyBatisHelperCommand"
-   name="対応するXMLを開く">
+   name="対応するXMLを開く2">
   </command>
  </extension>
  <extension point="org.eclipse.ui.menus">
