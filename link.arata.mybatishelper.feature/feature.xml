@@ -3,6 +3,7 @@
       id="link.arata.mybatishelper.feature"
       label="MyBatis Helper 0.1.0"
       version="0.1.0"
+      provider-name="Shinichi ARATA"
       plugin="link.arata.mybatishelper">
 
    <description url="http://www.example.com/description">
