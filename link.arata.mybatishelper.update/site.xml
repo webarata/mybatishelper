@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <site>
-   <feature url="features/link.arata.mybatishelper.feature_0.2.0.jar" id="link.arata.mybatishelper.feature" version="0.2.0">
+   <feature url="features/link.arata.mybatishelper.feature_0.2.2.jar" id="link.arata.mybatishelper.feature" version="0.2.2">
       <category name="mybatishelper"/>
    </feature>
-   <feature url="features/link.arata.mybatishelper.feature_0.2.1.jar" id="link.arata.mybatishelper.feature" version="0.2.1">
+   <feature url="features/link.arata.mybatishelper.feature_0.2.3.jar" id="link.arata.mybatishelper.feature" version="0.2.3">
       <category name="mybatishelper"/>
    </feature>
-   <category-def name="mybatishelper" label="MyBatis Helper"/>
+   <category-def name="mybatishelper" label="MyBatis Helper">
+      <description>
+         MyBatis用のプラグインです。
+      </description>
+   </category-def>
 </site>
