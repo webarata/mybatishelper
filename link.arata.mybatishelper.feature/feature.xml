@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="link.arata.mybatishelper.feature"
-      label="MyBatis Helper 0.2.3"
-      version="0.2.3"
+      label="MyBatis Helper 0.2.6"
+      version="0.2.6"
       provider-name="Shinichi ARATA"
       plugin="link.arata.mybatishelper">
 
@@ -226,7 +226,7 @@
          id="link.arata.mybatishelper"
          download-size="0"
          install-size="0"
-         version="0.2.3"
+         version="0.2.6"
          unpack="false"/>
 
 </feature>
