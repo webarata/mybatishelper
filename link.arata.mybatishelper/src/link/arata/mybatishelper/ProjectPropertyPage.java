@@ -19,7 +19,7 @@ import link.arata.mybatishelper.util.PropertiesUtil;
 import link.arata.mybatishelper.util.StringUtil;
 
 public class ProjectPropertyPage extends PropertyPage {
-	public static final String KEY_SOUSRC_PACKAGE = "sourcePackage";
+	public static final String KEY_SOURCE_PACKAGE = "sourcePackage";
 	public static final String KEY_RESOURCES_PACKAGE = "resourcesPackage";
 	public static final String KEY_NEW_LINE_CODE = "newLineCoee";
 	public static final String KEY_TEMPLATE_XML = "templateXml";
@@ -29,7 +29,7 @@ public class ProjectPropertyPage extends PropertyPage {
 	private Combo newLineCodeCombo;
 	private Text templateXmlText;
 
-	private static final String DEFAULT_SOUSRC_PACKAGE = "src/main/java";
+	private static final String DEFAULT_SOURCE_PACKAGE = "src/main/java";
 	private static final String DEFAULT_RESOURCES_PACKAGE = "src/main/resources";
 	private static final String DEFAULT_NEW_LINE_CODE = "CRLF";
 	private static final String DEFAULT_TEMPLATE_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\" ?>\r\n"
@@ -90,11 +90,11 @@ public class ProjectPropertyPage extends PropertyPage {
 	}
 
 	private void initValue(IProject project) {
-		String sourcePackage = PropertiesUtil.getValue(project, KEY_SOUSRC_PACKAGE);
+		String sourcePackage = PropertiesUtil.getValue(project, KEY_SOURCE_PACKAGE);
 		if (sourcePackage != null) {
 			sourcePackageText.setText(sourcePackage);
 		} else {
-			sourcePackageText.setText(DEFAULT_SOUSRC_PACKAGE);
+			sourcePackageText.setText(DEFAULT_SOURCE_PACKAGE);
 		}
 
 		String resourcesPackage = PropertiesUtil.getValue(project, KEY_RESOURCES_PACKAGE);
@@ -122,7 +122,7 @@ public class ProjectPropertyPage extends PropertyPage {
 	@Override
 	public boolean performOk() {
 		IProject project = getProject();
-		PropertiesUtil.setValue(project, KEY_SOUSRC_PACKAGE, sourcePackageText.getText());
+		PropertiesUtil.setValue(project, KEY_SOURCE_PACKAGE, sourcePackageText.getText());
 		PropertiesUtil.setValue(project, KEY_RESOURCES_PACKAGE, resourcesPackageText.getText());
 		PropertiesUtil.setValue(project, KEY_NEW_LINE_CODE, newLineCodeCombo.getText());
 		// 改行コードはLF固定
@@ -134,7 +134,7 @@ public class ProjectPropertyPage extends PropertyPage {
 
 	@Override
 	protected void performDefaults() {
-		sourcePackageText.setText(DEFAULT_SOUSRC_PACKAGE);
+		sourcePackageText.setText(DEFAULT_SOURCE_PACKAGE);
 		resourcesPackageText.setText(DEFAULT_RESOURCES_PACKAGE);
 		newLineCodeCombo.setText(DEFAULT_NEW_LINE_CODE);
 		templateXmlText.setText(DEFAULT_TEMPLATE_XML);
@@ -163,7 +163,7 @@ public class ProjectPropertyPage extends PropertyPage {
 			return;
 		}
 
-		PropertiesUtil.setValue(project, KEY_SOUSRC_PACKAGE, DEFAULT_RESOURCES_PACKAGE);
+		PropertiesUtil.setValue(project, KEY_SOURCE_PACKAGE, DEFAULT_SOURCE_PACKAGE);
 		PropertiesUtil.setValue(project, KEY_RESOURCES_PACKAGE, DEFAULT_RESOURCES_PACKAGE);
 		PropertiesUtil.setValue(project, KEY_NEW_LINE_CODE, DEFAULT_NEW_LINE_CODE);
 		PropertiesUtil.setValue(project, KEY_TEMPLATE_XML, DEFAULT_TEMPLATE_XML);
