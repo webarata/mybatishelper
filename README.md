@@ -17,5 +17,5 @@ http://webarata.github.io/mybatishelper
 ![XMLファイルの生成と移動](http://webarata.github.io/mybatishelper/image/usemybatishelper.gif)
 
 ## ライセンス
-Apache 2.0 License
+MIT
 
