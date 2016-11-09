@@ -6,7 +6,7 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-package link.arata.mybatishelper;
+package link.webarata3.mybatishelper;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -29,8 +29,8 @@ import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.ide.IDE;
 import org.eclipse.ui.texteditor.ITextEditor;
 
-import link.arata.mybatishelper.util.PropertiesUtil;
-import link.arata.mybatishelper.util.StringUtil;
+import link.webarata3.mybatishelper.util.PropertiesUtil;
+import link.webarata3.mybatishelper.util.StringUtil;
 
 public class MyBatisHelperCommand extends AbstractHandler {
 	private IProject project;

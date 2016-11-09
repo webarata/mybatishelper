@@ -6,7 +6,7 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-package link.arata.mybatishelper.util;
+package link.webarata3.mybatishelper.util;
 
 import java.io.BufferedReader;
 import java.io.IOException;

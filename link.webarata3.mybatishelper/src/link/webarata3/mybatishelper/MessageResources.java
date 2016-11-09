@@ -6,7 +6,7 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-package link.arata.mybatishelper;
+package link.webarata3.mybatishelper;
 
 import java.text.MessageFormat;
 import java.util.ResourceBundle;

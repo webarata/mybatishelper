@@ -2,22 +2,22 @@
 <?eclipse version="3.4"?>
 <plugin>
  <extension point="org.eclipse.ui.commands">
-  <command defaultHandler="link.arata.mybatishelper.MyBatisHelperCommand"
-   id="link.arata.mybatishelper.MyBatisHelperCommand"
+  <command defaultHandler="link.webarata3.mybatishelper.MyBatisHelperCommand"
+   id="link.webarata3.mybatishelper.MyBatisHelperCommand"
    name="対応するXMLを開く">
   </command>
  </extension>
  <extension point="org.eclipse.ui.menus">
   <menuContribution locationURI="popup:#CompilationUnitEditorContext?atter=additions">
-   <command commandId="link.arata.mybatishelper.MyBatisHelperCommand"
+   <command commandId="link.webarata3.mybatishelper.MyBatisHelperCommand"
     style="push">
   　</command>
  　</menuContribution>
  </extension>
  <extension point="org.eclipse.ui.propertyPages">
   <page
-   class="link.arata.mybatishelper.ProjectPropertyPage"
-   id="link.arata.mybatishelper.projectPropertyPage"
+   class="link.webarata3.mybatishelper.ProjectPropertyPage"
+   id="link.webarata3.mybatishelper.projectPropertyPage"
    name="MyBatis Helper">
    <enabledWhen>
     <adapt type="org.eclipse.core.resources.IProject" />

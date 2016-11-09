@@ -6,14 +6,14 @@
  * This software is released under the MIT License.
  * http://opensource.org/licenses/mit-license.php
  */
-package link.arata.mybatishelper.util;
+package link.webarata3.mybatishelper.util;
 
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.ILog;
 import org.eclipse.core.runtime.QualifiedName;
 
-import link.arata.mybatishelper.Activator;
+import link.webarata3.mybatishelper.Activator;
 
 public class PropertiesUtil {
 	/**

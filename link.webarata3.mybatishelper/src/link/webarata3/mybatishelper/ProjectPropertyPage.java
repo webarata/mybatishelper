@@ -1,4 +1,4 @@
-package link.arata.mybatishelper;
+package link.webarata3.mybatishelper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -15,8 +15,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.ui.dialogs.PropertyPage;
 
-import link.arata.mybatishelper.util.PropertiesUtil;
-import link.arata.mybatishelper.util.StringUtil;
+import link.webarata3.mybatishelper.util.PropertiesUtil;
+import link.webarata3.mybatishelper.util.StringUtil;
 
 public class ProjectPropertyPage extends PropertyPage {
 	public static final String KEY_SOURCE_PACKAGE = "sourcePackage";

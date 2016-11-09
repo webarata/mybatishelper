@@ -1,4 +1,4 @@
-package link.arata.mybatishelper;
+package link.webarata3.mybatishelper;
 
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IProject;
