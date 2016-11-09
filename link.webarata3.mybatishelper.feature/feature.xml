@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="link.arata.mybatishelper.feature"
+      id="link.webarata3.mybatishelper.feature"
       label="MyBatis Helper 0.2.8"
       version="0.2.8"
       provider-name="Shinichi ARATA"
@@ -223,7 +223,7 @@
    </url>
 
    <plugin
-         id="link.arata.mybatishelper"
+         id="link.webarata3.mybatishelper"
          download-size="0"
          install-size="0"
          version="0.2.8"
