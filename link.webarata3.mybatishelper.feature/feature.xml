@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="link.arata.mybatishelper.feature"
-      label="MyBatis Helper 0.2.7"
-      version="0.2.7"
+      label="MyBatis Helper 0.2.8"
+      version="0.2.8"
       provider-name="Shinichi ARATA"
-      plugin="link.arata.mybatishelper">
+      plugin="link.webarata3.mybatishelper">
 
    <description url="http://www.example.com/description">
       MyBatis用のヘルパープラグインです。JavaのMapperからXMLを自動生成、もしくはXMLへのジャンプをします。
@@ -226,7 +226,7 @@
          id="link.arata.mybatishelper"
          download-size="0"
          install-size="0"
-         version="0.2.7"
+         version="0.2.8"
          unpack="false"/>
 
 </feature>
