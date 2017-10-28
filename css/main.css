@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+:root {
+  --page-width: 1140px;
+}
+
 body {
   box-sizing: border-box;
   font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro',
@@ -7,4 +11,58 @@ body {
   'Lucida Grande', Verdana, Osaka, sans-serif;
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+}
+
+.header-innner {
+  background-color: #ff8285;
+  color: #fff;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.nav-inner {
+  background-color: #ff8285;
+  color: #fff;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.main-inner {
+  background-color: yellow;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.footer-inner {
+  background-color: silver;
+}
+
+/* グローバルナビゲーション */
+.navbar {
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
+}
+
+.navbar li {
+  padding: 10px 8px;
+}
+
+.navbar a {
+  border-bottom: 2px solid transparent;
+  color: #fff;
+  display: block;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.navbar a:link, .nav-bar a:visited {
+}
+
+.navbar a:hover, .nav-bar a:active {
+  border-bottom: 2px solid #fff;
+  transition: 0.3s border;
+}
+
+@media screen and (max-width: 640px) {
 }
