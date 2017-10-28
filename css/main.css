@@ -1,0 +1,10 @@
+@charset "utf-8";
+
+body {
+  box-sizing: border-box;
+  font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro',
+  'UD デジタル 教科書体 N-R', 　Meiryo, 'メイリオ',
+  'Lucida Grande', Verdana, Osaka, sans-serif;
+  font-weight: 300;
+  -webkit-font-smoothing: antialiased;
+}
