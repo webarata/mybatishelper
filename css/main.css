@@ -4,20 +4,39 @@
   --page-width: 1140px;
 }
 
-body {
+* {
   box-sizing: border-box;
+}
+
+body {
   font-family: 'ヒラギノ丸ゴ Pro W4', 'Hiragino Maru Gothic Pro',
-  'UD デジタル 教科書体 N-R', 　Meiryo, 'メイリオ',
+  'UD デジタル 教科書体 N-R', Meiryo, 'メイリオ',
   'Lucida Grande', Verdana, Osaka, sans-serif;
   font-weight: 300;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   -webkit-font-smoothing: antialiased;
 }
 
+header, nav, footer {
+  flex: 0 0 auto;
+}
+
+section {
+  display: flex;
+  flex: 1 0 auto;
+}
+
 .header-innner {
+  align-items: baseline;
   background-color: #ff8285;
   color: #fff;
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
   max-width: var(--page-width);
+  padding: 10px;
 }
 
 .nav-inner {
@@ -28,13 +47,24 @@ body {
 }
 
 .main-inner {
-  background-color: yellow;
+  background-color: aquamarine;
+  flex: 1 0 auto;
   margin: 0 auto;
   max-width: var(--page-width);
 }
 
 .footer-inner {
   background-color: silver;
+}
+
+.footer-main {
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.title {
+  font-size: 1.6rem;
 }
 
 /* グローバルナビゲーション */
@@ -62,7 +92,4 @@ body {
 .navbar a:hover, .nav-bar a:active {
   border-bottom: 2px solid #fff;
   transition: 0.3s border;
-}
-
-@media screen and (max-width: 640px) {
 }
