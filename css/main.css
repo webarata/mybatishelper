@@ -2,6 +2,8 @@
 
 :root {
   --page-width: 1140px;
+  --default-font-color: #eee;
+  --header-color: #831a1a;
 }
 
 * {
@@ -30,44 +32,34 @@ section {
 
 .header-innner {
   align-items: baseline;
-  background-color: #ff8285;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
+  background-color: var(--header-color);
+  color: var(--default-font-color);
   margin: 0 auto;
   max-width: var(--page-width);
   padding: 10px;
 }
 
-.nav-inner {
-  background-color: #ff8285;
-  color: #fff;
-  margin: 0 auto;
-  max-width: var(--page-width);
-}
-
-.main-inner {
-  background-color: aquamarine;
-  flex: 1 0 auto;
-  margin: 0 auto;
-  max-width: var(--page-width);
-}
-
-.footer-inner {
-  background-color: silver;
-}
-
-.footer-main {
-  max-width: var(--page-width);
-  margin: 0 auto;
-}
-
-/* ヘッダー */
-.title {
-  font-size: 1.6rem;
-}
-
 /* グローバルナビゲーション */
+.nav-inner {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+.header-innner a {
+  border-bottom: 2px solid transparent;
+  color: var(--default-font-color);
+  display: block;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.nav-logo {
+  font-family: 'Kalam', cursive;
+  font-size: 1.8rem;
+}
+
 .navbar {
   display: flex;
   justify-content: flex-end;
@@ -78,18 +70,41 @@ section {
   padding: 10px 8px;
 }
 
-.navbar a {
-  border-bottom: 2px solid transparent;
-  color: #fff;
-  display: block;
-  padding: 3px;
-  text-decoration: none;
+.navbar a:link, .navbar a:visited {
 }
 
-.navbar a:link, .nav-bar a:visited {
-}
-
-.navbar a:hover, .nav-bar a:active {
-  border-bottom: 2px solid #fff;
+.navbar a:hover, .navbar a:active {
+  border-bottom: 2px solid var(--default-font-color);
   transition: 0.3s border;
+}
+
+.nav-logo a, .nav-logo a:link, .nav-logo a:visited, .nav-logo a:hover, .nav-logo a:active {
+  align-items: center;
+  display: flex;
+}
+
+.nav-logo img {
+  margin-right: 0.5rem;
+  width: 2.3rem;
+}
+
+.main-inner {
+  background-color: aquamarine;
+  flex: 1 0 auto;
+  margin: 0 auto;
+  max-width: var(--page-width);
+}
+
+main {
+  background-color: var(--header-color);
+  color: var(--default-font-color);
+}
+
+.footer-inner {
+  background-color: silver;
+}
+
+.footer-main {
+  max-width: var(--page-width);
+  margin: 0 auto;
 }
