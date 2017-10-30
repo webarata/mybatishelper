@@ -2,8 +2,10 @@
 
 :root {
   --page-width: 1140px;
-  --default-font-color: #eee;
-  --header-color: #831a1a;
+  --header-font-color: #eee;
+  --header-color: #1476cb;
+  --gradient-color: rgba(20, 110, 203, .5);
+  --main-font-color: #041ecb;
 }
 
 * {
@@ -11,7 +13,7 @@
 }
 
 body {
-  font-family: 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
+  font-family: Roboto, 'Hiragino Kaku Gothic Pro', 'ヒラギノ角ゴ Pro W3', Meiryo, メイリオ, Osaka, 'MS PGothic', arial, helvetica, sans-serif;
   font-weight: 300;
   display: flex;
   flex-direction: column;
@@ -24,7 +26,7 @@ header, nav, footer {
 }
 
 .header-section {
-  background: linear-gradient(90deg, var(--header-color), rgba(127, 26, 26, .5));
+  background: linear-gradient(90deg, var(--header-color), var(--gradient-color));
   display: flex;
   flex: 0 0 auto;
 }
@@ -34,12 +36,12 @@ header, nav, footer {
 }
 
 header {
-  background: linear-gradient(90deg, var(--header-color), rgba(127, 26, 26, .5));
+  background: linear-gradient(90deg, var(--header-color), var(--gradient-color));
 }
 
 .header-innner {
   align-items: baseline;
-  color: var(--default-font-color);
+  color: var(--header-font-color);
   margin: 0 auto;
   max-width: var(--page-width);
   padding: 10px;
@@ -55,7 +57,7 @@ header {
 
 .header-innner a {
   border-bottom: 2px solid transparent;
-  color: var(--default-font-color);
+  color: var(--header-font-color);
   display: block;
   padding: 3px;
   text-decoration: none;
@@ -80,8 +82,8 @@ header {
 }
 
 .navbar a:hover, .navbar a:active {
-  border-bottom: 2px solid var(--default-font-color);
-  transition: 0.3s border;
+  border-bottom: 2px solid var(--header-font-color);
+  transition: 0.5s border;
 }
 
 .nav-logo a, .nav-logo a:link, .nav-logo a:visited, .nav-logo a:hover, .nav-logo a:active {
@@ -102,7 +104,7 @@ header {
 }
 
 .main-message {
-  color: var(--default-font-color);
+  color: var(--header-font-color);
   position:absolute;
   z-index: 0;
 }
@@ -121,15 +123,47 @@ header {
 }
 
 .main-inner {
+  color: var(--main-font-color);
   margin: 0 auto;
   max-width: var(--page-width);
+  padding: 20px;
 }
 
+/* フッター */
+
 .footer-inner {
-  background-color: silver;
+  background-color: #a7bedb;
 }
 
 .footer-main {
-  max-width: var(--page-width);
+  display: flex;
+  justify-content: space-between;
   margin: 0 auto;
+  max-width: var(--page-width);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  width: 100%;
+}
+
+.copyright {
+  flex: 1 1 auto;
+}
+
+footer ul {
+  display: flex;
+  justify-content: space-around;
+}
+
+footer li {
+  display: inline-block;
+  width: 1.6em;
+}
+
+footer a {
+  color: #333;
+  text-decoration: none;
+}
+
+footer a:hover, footer a:active {
+  color: #f33;
 }
